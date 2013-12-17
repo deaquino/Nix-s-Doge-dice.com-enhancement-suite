@@ -31,6 +31,7 @@
 //A full copy of the GNU General Public License, version 2 can be found here. http://www.gnu.org/licenses/gpl-2.0.html
 //-------------------------------------------------------------------
 var icon_imgage = chrome.extension.getURL('img/icon.png');
+var background_imgage = chrome.extension.getURL('img/div_container_1.png');
 var timer;
 var bal;
 var bet;
@@ -720,7 +721,7 @@ function create_ui() { // creates most of the gui stuff
 
      $container = $('<div id="chipper" class="container"/>');
     var $container2 = $('<div id="chipper2" class="container"/>');
-      var $button_group = $('<div style="width:99%;background-color:#787878 ;border:2px solid; border-color: #505050;" class="button_group"/>');
+	var $button_group = $('<div style="width:99%;background-image: url(' + background_imgage + ') ;border:2px solid; border-color: #525252;" class="button_group"/>');
     var $options_group = $('<div style="width:99%;background-color:transparent ;border:0px solid;" class="button_group"/>');
       $container.append($button_group);
     $container2.append($options_group)
@@ -733,7 +734,7 @@ function create_ui() { // creates most of the gui stuff
 	});
 	  $container.append($reset);
 
-      var $run_div = $('<div style="background-color:#787878;margin-top:50px;border:2px solid; border-color: #505050;" class="button_inner_group"/>');
+	  var $run_div = $('<div background-color:rgba(35,35,35,0.5);border:2px solid; border-color: #999999;" class="button_inner_group"/>');
       $run = $('<button title="Will only work if you have enough bank to run the martingale strategy" id="c_run" style="margin-bottom:5px;margin-top:5px;margin-left:5px;">Go</button>');
 
       $run.click(function () {
@@ -903,9 +904,9 @@ function create_ui() { // creates most of the gui stuff
 
     /////////////////////////////////////////////////////////////////////////////////////
 
-	var $graphDiv =$('<div id="chipper3" style="width:750px;height:100px" class="graph-container"><div style="width:750px;height:100px" id="g_placeholder" class="graph-placeholder"></div></div>'); //graph holder
-    var $fieldset = $('<fieldset style="background-color:transparent;border:2px solid; border-color: #505050;"/>');
-    var $fieldset_o = $('<fieldset style="background-color:#787878;border:2px solid; border-color: #505050;"/>');
+	var $graphDiv = $('<fieldset id="chipper3" style="margin-left:15px;background-color:rgba(35,35,35,0.9);border:2px solid; border-color: #999999;width:700px;height:100px;margin-right:3px" class="graph-container"><div style="padding: 0;width:700px;height:100px;margin-right:0px" id="g_placeholder" class="graph-placeholder"></div>/>'); //graph holder
+	var $fieldset = $('<fieldset style="margin-left:auto;margin-right:2px;background-color:rgba(35,35,35,0.5);border:2px solid; border-color: #999999;"/>');
+	var $fieldset_o = $('<fieldset style="background-color:rgba(35,35,35,0.5);border:2px solid; border-color: #999999;"/>');  
 	var $c_spacer = $('<div style="height:9px;width:30px;margin-left:0px;margin-right:0px;"/>');
 
     $fieldset.append($row1);
