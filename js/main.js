@@ -904,7 +904,7 @@ function create_ui() { // creates most of the gui stuff
 
     /////////////////////////////////////////////////////////////////////////////////////
 
-	var $graphDiv = $('<fieldset id="chipper3" style="margin-left:15px;background-color:rgba(35,35,35,0.9);border:2px solid; border-color: #999999;width:700px;height:100px;margin-right:3px" class="graph-container"><div style="padding: 0;width:700px;height:100px;margin-right:0px" id="g_placeholder" class="graph-placeholder"></div>/>'); //graph holder
+	var $graphDiv = $('<fieldset id="chipper3" style="margin-left:15px;background-color:rgba(35,35,35,0.9);border:2px solid; border-color: #999999;width:700px;height:100px;margin-right:3px" class="graph-container"><div style="padding: 0;width:700px;height:100px;margin-right:0px" id="g_placeholder" class="graph-placeholder"></div>'); //graph holder
 	var $fieldset = $('<fieldset style="margin-left:auto;margin-right:2px;background-color:rgba(35,35,35,0.5);border:2px solid; border-color: #999999;"/>');
 	var $fieldset_o = $('<fieldset style="background-color:rgba(35,35,35,0.5);border:2px solid; border-color: #999999;"/>');  
 	var $c_spacer = $('<div style="height:9px;width:30px;margin-left:0px;margin-right:0px;"/>');
