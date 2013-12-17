@@ -452,7 +452,7 @@ function c_start_bot() { //starts the bot
 }
 
 function c_stop_bot() { //stops the bot
-    console.log('Bot stopped from command');
+    console.log('Bot stopped');
     test_css('Stopping martingale !!');
       clearInterval(timer);
       running = false;
@@ -562,6 +562,8 @@ function martingale() { //the main martingale function
                     yin_yang2 = ((yin_yang / bet_total) * 100); //win % = wins/total bets * 100 // This gives us our percentage win
 
                                new_val = scientific(new_val);
+					
+								new_val = parseFloat(new_val).toFixed(8);
 
                                 
                                 $("#pct_bet").val(new_val);
@@ -599,6 +601,7 @@ function martingale() { //the main martingale function
                 yin_yang2 = ((yin_yang / bet_total) * 100); //win % = wins/total bets * 100 // This gives us our percentage win
 
                              new_val = scientific(new_val);
+							new_val = parseFloat(new_val).toFixed(8);
 
                             
                             $("#pct_bet").val(new_val);
@@ -637,6 +640,7 @@ function martingale() { //the main martingale function
             yin_yang2 = ((yin_yang / bet_total) * 100); //win % = wins/total bets * 100 // This gives us our percentage win
 
                          new_val = scientific(new_val);
+						new_val = parseFloat(new_val).toFixed(8);
 
                         
                         $("#pct_bet").val(new_val);
