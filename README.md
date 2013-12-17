@@ -5,7 +5,6 @@ This is a chrome extension that provides various enhancements to Doge-dice.com. 
 
 THIS IS ALPHA ALPHA SOFTWARE. PLEASE REVIEW THE CODE AND DO NOT HAVE MORE THAN YOU ARE WILLING TO LOSE AS YOUR BALANCE.
 
-THIS REPO IS A BLEEDING EDGE REPO. INSTALL AT YOUR OWN RISK. THE VERSION ON THE GOOGLE CHROME STORE IS STABLE.
 
 
 ![ScreenShot](https://raw.github.com/CriticalNix/Snippets/master/IMAGES/enhancement-s.jpg)
@@ -22,12 +21,7 @@ Installation from source
 4. Make sure `Developer Mode` is checked in the upper right.
 5. Click `Load unpacked extensions...` and browse to the directory where you save the repository.
 6. Now browse to https://Doge-dice.com and you should see a new addition for Martingale betting.
-
-or
-
-Installation from Market
-
-go to https://chrome.google.com/webstore/detail/efedpmfbfgkajhiahmifclkdghfbogim and download from google. 
+ 
 
 How to Bet
 ----------
