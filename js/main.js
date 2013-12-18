@@ -991,45 +991,36 @@ function toggle_gui_pos() {
 }
 
 function set_run() { //logic and check if bot has enough bank for martingale
-	  if($multiplier !== undefined &&
-		      $steps !== undefined)
-	      if($.isNumeric($multiplier.val()) &&
-		           $.isNumeric($steps.val()) &&
-		           $.isNumeric($('#pct_bet').val())) {
-
-		           var total = 0;
-		           var mult = 1;
-		           var i;
-
-		           for(i = 0; i < $steps.val(); i++) {
-			             total += $('#pct_bet').val() * mult; //total = total + $('#pct_bet').val() * mult;
-			             mult *= $multiplier.val(); //mult = mult * $multiplier.val();
-			           
-		}
-		            total = parseFloat(total).toFixed(8);
-					console.log('total bank needed for martingale:' + total);
+	if ($multiplier !== undefined && $steps !== undefined)
 		
-					
-
-		           if(total != 0 && total < $('#pct_balance').val()) {
-			             console.log("setting class VALID");
-			         $run.removeClass('invalid');
-			           
+		if ($.isNumeric($multiplier.val()) && $.isNumeric($steps.val()) && 	$.isNumeric($('#pct_bet').val())) {
+			
+			var total = 0;
+			var mult = 1;
+			var i;
+			
+			for (i = 0; i < $steps.val(); i++) {
+				total += $('#pct_bet').val() * mult; //total = total + $('#pct_bet').val() * mult;
+				mult *= $multiplier.val(); //mult = mult * $multiplier.val();			           
+			}
+			
+			console.log('total bank needed for martingale:' + total);
+			
+			if (total != 0 && total < $('#pct_balance').val()) {
+				console.log("setting class VALID");
+				$run.removeClass('invalid');
+				           
+			} else {
+				console.log("setting class invalid");
+				$run.addClass('invalid');
+				           
+			}
+			      
+		} else {
+			console.log("setting class invalid");
+			$run.addClass('invalid');
+			      
 		}
-		           else {
-			             console.log("setting class invalid");
-			         $run.addClass('invalid');
-			           
-		}
-		      
-	}
-
-	      else {
-		        console.log("setting class invalid");
-		        $run.addClass('invalid');
-
-		      
-	}
 }
 
 //
