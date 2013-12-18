@@ -10,7 +10,8 @@
   ],
   "web_accessible_resources": [
     "js/*",
-    "img/*"
+    "img/*",
+	"snd/*"
   ],
    "background": {
       "persistent": false,

@@ -30,6 +30,9 @@
 //
 //A full copy of the GNU General Public License, version 2 can be found here. http://www.gnu.org/licenses/gpl-2.0.html
 //-------------------------------------------------------------------
+var coin_url = chrome.extension.getURL('snd/coin-drop-1.mp3');
+var beep_url = chrome.extension.getURL('snd/beep-7.mp3');
+var fate_url = chrome.extension.getURL('snd/Fatality.mp3');
 var Nix_imgage = chrome.extension.getURL('img/N6n5UNz.png');
 var icon_imgage = chrome.extension.getURL('img/icon.png');
 var background_imgage = chrome.extension.getURL('img/div_container_1.png');
@@ -52,9 +55,9 @@ var check_step = 0; //Simple switch to make sure we grab the balance once
 var bet_total = 0; //Total bets
 var new_val = 0.00000001;
 var new_val2 = 0; //check for martinDelay_loop
-var coin_drop = new Audio('https://dl.dropboxusercontent.com/u/27471347/coin-drop-1.mp3');
-var snd_beep = new Audio('https://dl.dropboxusercontent.com/u/27471347/beep-7.mp3');
-var snd_alert = new Audio('https://dl.dropboxusercontent.com/u/27471347/alerts/Air-Raid-Siren-Alert.mp3');
+var coin_drop = new Audio(coin_url);
+var snd_beep = new Audio(beep_url);
+var snd_alert = new Audio(fate_url);
 var win1 = 0;
 var lose1 = 0;
 var max_win = 0;
