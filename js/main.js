@@ -793,7 +793,7 @@ function create_ui() { // creates most of the gui stuff
 	$row1.append($numz2);
 
 	  var $label4 = $('<p style="border:1px solid; border-color: #505050;" class="llabel">Lag</p>');
-	  $percentage = $('<input title="what percentage of you balance to reset to. Only works when checked in options" style="border:1px solid; border-color: #505050;" class="readonly" id="lag_c" value="1"/>');
+	  $percentage = $('<input title="time between updates on site." style="border:1px solid; border-color: #505050;" class="readonly" id="lag_c" value="1"/>');
 	var $numz3 = $('<p style="margin-right:15px;border:1px solid; border-color: #505050;" class="rlabel">s</p>');
 	  $row2.append($label4);
 	  $row2.append($percentage);
