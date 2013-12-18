@@ -114,7 +114,12 @@ function martinDelay_loop() { //auto tweaks the delay speed according to values 
 function generate_graph() {
 	var res = [];
 	for (var i = 0; i < bet_data.length; ++i) {
-		res.push([i, bet_data[i]])
+		if (res.length >= 201) {
+			res.shift();
+			res.push([i, bet_data[i]])
+		} else {
+			res.push([i, bet_data[i]])
+		}
 	}
 
 	return res;
@@ -325,7 +330,7 @@ function bust_chance() { //probability, guess and suggested multiplier
 				console.log('cBust2=' + cBust2);
 			}
 
-			$("#magic_amt").val(cBust2.toFixed(10));
+			$("#magic_amt").val(cBust2);
 
 			console.log('steps: ' + $steps.val() +
 				'   multiplier:' + $multiplier.val() +
