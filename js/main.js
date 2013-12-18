@@ -75,6 +75,10 @@ var bet_data = [];
 var xcount = 1;
 var toggle = 2;
 var last_loss = 1;
+var startTime2 = 0;
+var profit_start = 0;
+var profit_start2 = 0;
+
 
 function martinDelay_loop() { //auto tweaks the delay speed according to values found on the just-dice FAQ
 
@@ -114,6 +118,22 @@ function generate_graph() {
 	}
 
 	return res;
+}
+
+function update_timer() {
+
+	setInterval(function () {
+		var startTime = new Date();
+		profit_start = parseFloat($(".sprofitraw").html().replace(/,/g, ""));
+		if (startTime != startTime2 && profit_start != profit_start2) {
+			update_time = (startTime - startTime2) / 1000;
+			$("#lag_c").val(update_time);
+			lag_c
+			profit_start2 = profit_start;
+			startTime2 = startTime;
+		}
+	}, 100);
+	
 }
 
 function update_graphs() {
@@ -189,6 +209,12 @@ function test_css(message) { // shows a message in log area
 function simp_rand() { //simple random function to select from hi or lo
 	var rndhilo = Math.random() < 0.5 ? 1 : 0;
 	update_graphs();
+	var results = $("div#me .results")[0];
+	var result = $(results).children()[0];
+	var betid = $($(result).children(".betid")).text();
+	var spin = parseInt($($(result).children(".lucky")).text());
+	$("#rolledInput").val(spin);
+	
 	if ($('#switch_loss_check').prop('checked')) {
 		if (last_loss == 1) {
 			$("#a_hi").trigger('click');
@@ -547,60 +573,7 @@ function martingale() { //the main martingale function
 			}
 
 		//Add a step into the martingale to see if we reach our desired loss length, If so reset
-		if (current_bet_num == $delay.val() && curr_bal < bal.data('oldVal')) // this is Reset loss step
-			     {
-				var startTime = new Date();
-				if ($('#resetL_check').prop('checked')) {}
-				// for eye of adds a check before reset loss can be used
-				else {
-			if (last_loss == 0) {
-				last_loss = 1;
-				//console.log('last_loss: ' + last_loss);
-			} 
-			else if (last_loss == 1) {
-				last_loss = 0;
-				//console.log('last_loss: ' + last_loss);
-			}
-					current_bet_num = 1;
-					        $("#pct_bet").val(start_bet);
-					         var profit = parseFloat($("#pct_balance").val()) - lastBal;
-					            var new_val = ($('#pct_balance').val() / 100) * ($percentage).val();
-
-					yin_yang2 = ((yin_yang / bet_total) * 100); //win % = wins/total bets * 100 // This gives us our percentage win
-
-					           new_val = scientific(new_val);
-
-					new_val = parseFloat(new_val).toFixed(8);
-
-					            
-					            $("#pct_bet").val(new_val);
-
-					             //Increase the steps
-					         current_steps = 1;
-					             //current_steps++;
-					/*console.log('steps: ' + $steps.val() +
-								'   multiplier:' + $multiplier.val() +
-								'   bal: ' + $('#pct_balance').val() +
-								'   bet:' + $('#pct_bet').val() +
-								'   suggested multiplier:' + multi4 +
-								'   Probability:' + cBust3 +
-								'   Running speed is ' + (martinDelay / 1000) + ' seconds!');*/
-
-					console.log('Reset loss step current_steps:' + current_steps + ' current_bet_num:' + current_bet_num + ' yin_yang:' + yin_yang  + ' bet_total:' + bet_total + ' lose1:' + lose1 + ' win1:' + win1);
-					bet_total++;
-					lose1++;
-					win1 = 0;
-					simp_rand();
-					popArray();
-					$("#win_lose").val((yin_yang2).toFixed(2)); //Update win %
-					$("#pro_fits").val((profit).toFixed(8)); //Update Profit
-					profit_color();
-					$("#Bet_amt").val(bet_total); //Update bet counter
-					        
-				}
-			}
-		     //end of reset loss step
-		else if (curr_bal > bal.data('oldVal')) //This is win step
+		if (curr_bal > bal.data('oldVal')) //This is win step
 			     {
 
 				if ($('#stopwin_check').prop('checked')) { // checks to see if stop on win is checked
@@ -812,16 +785,16 @@ function create_ui() { // creates most of the gui stuff
 	 
 	  var $row3 = $('<div class="row"/>');
 	 
-	  var $label3 = $('<p style="border:1px solid; border-color: #505050;" class="llabel">Reset loss</p>');
-	  $delay = $('<input title="how many losses before calling reset %" style="border:1px solid; border-color: #505050;" id="reset_loss" value="16"/>');
-	var $numz2 = $('<p style="margin-right:15px;border:1px solid; border-color: #505050;" class="rlabel">!</p>');
+	  var $label3 = $('<p style="border:1px solid; border-color: #505050;" class="llabel">Rolled</p>');
+	  $delay = $('<input title="The lucky number you rolled" style="border:1px solid; border-color: #505050;" id="rolledInput" class="readonly" value="0"/>');
+	var $numz2 = $('<p style="margin-right:15px;border:1px solid; border-color: #505050;" class="rlabel">#</p>');
 	  $row1.append($label3);
 	  $row1.append($delay);
 	$row1.append($numz2);
 
-	  var $label4 = $('<p style="border:1px solid; border-color: #505050;" class="llabel">Reset %</p>');
-	  $percentage = $('<input title="what percentage of you balance to reset to. Only works when checked in options" style="border:1px solid; border-color: #505050;" id="reset_p" value="1"/>');
-	var $numz3 = $('<p style="margin-right:15px;border:1px solid; border-color: #505050;" class="rlabel">%</p>');
+	  var $label4 = $('<p style="border:1px solid; border-color: #505050;" class="llabel">Lag</p>');
+	  $percentage = $('<input title="what percentage of you balance to reset to. Only works when checked in options" style="border:1px solid; border-color: #505050;" class="readonly" id="lag_c" value="1"/>');
+	var $numz3 = $('<p style="margin-right:15px;border:1px solid; border-color: #505050;" class="rlabel">s</p>');
 	  $row2.append($label4);
 	  $row2.append($percentage);
 	$row2.append($numz3);
@@ -905,10 +878,6 @@ function create_ui() { // creates most of the gui stuff
 	//stopwin_check
 	$swin_c = $('<div><input type="checkbox" value="1" name="stopwin_check" id="stopwin_check" /> Stop on win</div>')
 		$o_row1.append($swin_c);
-
-	//resetL_check
-	$reset_loss_safety = $('<div><input type="checkbox" value="1" name="resetL_check" id="resetL_check" checked="checked" /> uncheck to enable reset loss</div>')
-		$o_row1.append($reset_loss_safety);
 
 	//rand_check
 	$rand_c = $('<div><input type="checkbox" value="1" name="rand_check" id="rand_check" /> Random hi/lo</div>')
@@ -1093,6 +1062,8 @@ $(document).ready(function () { //this fires when the page loads
 	profit_checker();
 
 	update_graphs();
+	
+	update_timer();
 
 	   //set the balance
 	   //when the balance changes and we're martingaling
