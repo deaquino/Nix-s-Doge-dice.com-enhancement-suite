@@ -552,11 +552,11 @@ function martingale() { //the main martingale function
 				else {
 			if (last_loss == 0) {
 				last_loss = 1;
-				console.log('last_loss: ' + last_loss);
+				//console.log('last_loss: ' + last_loss);
 			} 
 			else if (last_loss == 1) {
 				last_loss = 0;
-				console.log('last_loss: ' + last_loss);
+				//console.log('last_loss: ' + last_loss);
 			}
 					current_bet_num = 1;
 					        $("#pct_bet").val(start_bet);
@@ -644,11 +644,11 @@ function martingale() { //the main martingale function
 			play_sound2();
 			if (last_loss == 0) {
 				last_loss = 1;
-				console.log('last_loss: ' + last_loss);
+				//console.log('last_loss: ' + last_loss);
 			} 
 			else if (last_loss == 1) {
 				last_loss = 0;
-				console.log('last_loss: ' + last_loss);
+				//console.log('last_loss: ' + last_loss);
 			}
 			             //Increase our bet by the multiplier
 			var profit = parseFloat($("#pct_balance").val()) - lastBal;
