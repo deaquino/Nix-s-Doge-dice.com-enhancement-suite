@@ -1004,9 +1004,9 @@ function set_run() { //logic and check if bot has enough bank for martingale
 				mult *= parseFloat($('#multiplier').val()); //mult = mult * $multiplier.val();			           
 			}
 
-			console.log('total bank needed for martingale:' + total);
+			console.log('total bank needed for martingale:' + scientific(total));
 
-			if (total != 0 && total < $('#pct_balance').val()) {
+			if (scientific(total) != 0 && scientific(total) < $('#pct_balance').val()) {
 				console.log("setting class VALID");
 				$run.removeClass('invalid');
 				           
