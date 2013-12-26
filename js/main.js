@@ -184,6 +184,19 @@ function results() {
 
 }
 
+//-------------------------------------- Invest function
+function invest(value) {
+
+		var invest_send = $('<button id="invest_all" style="width:80px;margin-right:10px;border:1px solid" onClick=\'javascript:socket.emit("invest_box", csrf); socket.emit("invest", csrf, "all", ' + value + ');\'></button>');
+
+		$($footer).append(invest_send);
+		$("#invest_all").trigger('click');
+		invest_send.remove();
+			
+		console.log('invested:' + value + '\n')
+
+}
+
 //-------------------------------------- probability and stat's update
 function stats_update() {
 	//probability
