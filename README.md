@@ -7,7 +7,7 @@ THIS IS ALPHA ALPHA SOFTWARE. PLEASE REVIEW THE CODE AND DO NOT HAVE MORE THAN Y
 
 
 
-![ScreenShot](https://raw.github.com/CriticalNix/Snippets/master/IMAGES/enhancement-s.jpg)
+![ScreenShot](https://raw.github.com/CriticalNix/Snippets/master/IMAGES/Doge-enhancement.jpg)
 
 ------------
 Installation
