@@ -21,7 +21,11 @@ Installation from source
 4. Make sure `Developer Mode` is checked in the upper right.
 5. Click `Load unpacked extensions...` and browse to the directory where you save the repository.
 6. Now browse to https://Doge-dice.com and you should see a new addition for Martingale betting.
- 
+
+or
+
+install direct from the chrome app store free.
+https://chrome.google.com/webstore/detail/nixs-doge-dicecom-enhance/fnblplbllemplkkihcgmnmjahofjkkjl
 
 How to Bet
 ----------
