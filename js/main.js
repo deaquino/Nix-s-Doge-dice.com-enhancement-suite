@@ -32,7 +32,7 @@ var balance = 0;
 var start_values_check = 0;
 var betid = 0;
 var last_betid = 0;
-var version_c = "1.2.1";
+var version_c = "1.2.3";
 var heartbeat_bpm = 100; //this is the bots ticker if for some reason the site temp bans  for spam betting lower this to 125
 var bet_data = [];
 var arr_bets = [];
@@ -56,6 +56,7 @@ var current_profit = 0;
 var hi_lo;
 var randomizer_count = 0;
 var randomizing = 0;
+var cpr;
 
 //window.location.reload(true);
 //-------------------------------------- Heart and possibly soul of the bot. Everything is called from here.
@@ -64,18 +65,20 @@ function heart_beat() {
 	footer();
 	parse_chat();
 	stop_bank();
+	cpr = !cpr;
 
 	console.log(' Started ' + gets_date() + ' Heartbeat:' + heartbeat_bpm + '\n' + '\n');
 
 	setInterval(function () {
-		value_grip();
-		results();
-		stats_update();
-		total_check();
-		Martingale();
-		max_loss_streak();
-		max_win_streak();
-
+		if (cpr){
+			value_grip();
+			results();
+			stats_update();
+			total_check();
+			Martingale();
+			max_loss_streak();
+			max_win_streak();
+		}
 	}, heartbeat_bpm);
 }
 
@@ -594,12 +597,18 @@ function gui() { //
 		basicPopup(help_p);
 	});
 	  $container.append($showhidetrigger6);
+
+	$stasis = $('<button title="Much Help" style="margin-right:10px;border:1px solid" id="showhidetrigger6" href="#">Cardiology</button>'); //Popup help
+	  $stasis.click(function () {
+		cpr = !cpr;
+	});
+	  $container.append($stasis);
 /*
 	$showhidetrigger7 = $('<button title="Much Help" style="margin-right:10px;border:1px solid" id="showhidetrigger6" href="#">HELP</button>'); //Popup help
 	  $showhidetrigger7.click(function () {
 			randomizer();	
 	});
-	  $container.append($showhidetrigger7);
+	  $container.append($showhidetrigger7); 
 */	
 
 	//-------------------------------------- Inner UI input boxes
