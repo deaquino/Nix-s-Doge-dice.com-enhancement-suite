@@ -421,10 +421,15 @@ function bust() {
 //-------------------------------------- Graphing functions
 function generate_graph() {
 	var res = [];
+	var gb= parseFloat($("#graph_length").val());
 	for (var i = 0; i < bet_data.length; ++i) {
-		if (res.length >= 201) {
-			res.shift();
+		if (res.length >= gb) {
+			while (res.length > gb){
+				res.shift(); 
+			}
+
 			res.push([i, bet_data[i]])
+
 		} else {
 			res.push([i, bet_data[i]])
 		}
@@ -436,12 +441,8 @@ function generate_graph() {
 function update_graphs() {
 	var g_bal = $('#pct_balance').val();
 
-	if (bet_data.length >= 201) {
-		bet_data.shift();
 		bet_data.push(g_bal);
-	} else {
-		bet_data.push(g_bal);
-	}
+
 
 	var plot = $.plot("#g_placeholder", [generate_graph()], {
 			series : {
@@ -509,7 +510,11 @@ function gui() { //
 
     //randomizer_check
     $randomizer_check = $('<div style="margin-right:10px"><font color="white"><input type="checkbox" value="1" name="randomizer_check" id="randomizer_check" /> randomize every 12  </font></div>')
-        $o_row1.append($randomizer_check);
+        $o_row1.append($randomizer_check);     
+
+    //graph_length
+    $graph_length = $('<div style="margin-left:10px;margin-right:10px"><font color="white"><input style="border:1px solid; border-color: #505050;" id="graph_length" value="200"/> max graph length  </font></div>')
+        $o_row1.append($graph_length);
 
 	//-------------------------------------- builds user interface
 	$container = $('<div id="chipper" class="container"/>');
