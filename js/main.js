@@ -378,9 +378,9 @@ function bet_click(bet_value) {
 		} else {
 
 			betting = 1;
+			steps = 0;
 			marti_reset_value = scientific(marti_reset_value);
 			$("#pct_bet").val(marti_reset_value);
-
 			$("#a_hi").trigger('click');
 		}
 	} else if (steps < marti_limit && betting == 0 && running == 1) {
