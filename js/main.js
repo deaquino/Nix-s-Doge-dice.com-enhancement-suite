@@ -361,14 +361,13 @@ function update_maximum_bet() {
 		if (running == 1 && winning == 1 && betting == 0) {
 			var bal = parseFloat($('#pct_balance').val());
 			var stepsInput = $limiterInput.val();
-			var multiplier = $multiplierInput.val();
-			var vTot = bal;
+			var multiplier = parseFloat($multiplierInput.val());
+			var vTot = bal / multiplier;
 			
 			for (i = 0; i < stepsInput; i++) {
-				vTot -= vTot / multiplier;
+				vTot = i == 0 ? (vTot * multiplier) - vTot : vTot / multiplier;
 			}
-			
-			reset_bet = vTot;
+			reset_bet = vTot.toFixed(8);
 		}
 	}
 }
