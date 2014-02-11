@@ -3,7 +3,7 @@
 //This program is free software; you can redistribute it and/or
 //modify it under the terms of the GNU General Public License
 //version 2.
-//t
+//
 //This program is distributed in the hope that it will be useful,
 //but WITHOUT ANY WARRANTY; without even the implied warranty of
 //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -75,6 +75,7 @@ function heart_beat() {
 			results();
 			stats_update();
 			total_check();
+			update_maximum_bet();
 			Martingale();
 			max_loss_streak();
 			max_win_streak();
@@ -353,6 +354,25 @@ function Martingale() {
 	}
 }
 
+//-------------------------------------- bet always the maximum
+function update_maximum_bet() {
+	if($('#bet_maximum_always_check').prop('checked') && $.isNumeric($limiterInput.val()) && $.isNumeric($multiplierInput.val()))
+	{
+		if (running == 1 && winning == 1 && betting == 0) {
+			var bal = parseFloat($('#pct_balance').val());
+			var stepsInput = $limiterInput.val();
+			var multiplier = $multiplierInput.val();
+			var vTot = bal;
+			
+			for (i = 0; i < stepsInput; i++) {
+				vTot -= vTot / multiplier;
+			}
+			
+			reset_bet = vTot;
+		}
+	}
+}
+
 //-------------------------------------- bets from a value passed to it if it has not reached step limiter. Also switch on loss and random hi lo
 function bet_click(bet_value) {
 	var rndhilo = Math.random() < 0.5 ? 1 : 0;
@@ -514,6 +534,10 @@ function gui() { //
     //randomizer_check
     $randomizer_check = $('<div style="margin-right:10px"><font color="white"><input type="checkbox" value="1" name="randomizer_check" id="randomizer_check" /> randomize every 12  </font></div>')
         $o_row1.append($randomizer_check);     
+        
+    //bet always maximum
+    $bet_maximum_always_check = $('<div style="margin-right:10px"><font color="red"><input type="checkbox" value="1" name="bet_maximum_always_check" id="bet_maximum_always_check" /> bet always maximum  </font></div>')
+        $o_row1.append($bet_maximum_always_check);   
 
     //graph_length
     $graph_length = $('<div style="margin-left:10px;margin-right:10px"><font color="white"><input style="border:1px solid; border-color: #505050;" id="graph_length" value="200"/> max graph length  </font></div>')
@@ -978,7 +1002,6 @@ function parse_chat() { //parse chat used for chat commands and to insert emotic
 			var id_usr = reg_usr.exec(toParse);
 			var id_time = reg_time.exec(toParse);
 			var cleanMsg = toParse.split("> ")[1];
-			
 			var log_tag = id_time ? (id_time[0]) : undefined;
 
 			if ((log_tag) != (arr_time[0])) {
