@@ -3,7 +3,7 @@
 //This program is free software; you can redistribute it and/or
 //modify it under the terms of the GNU General Public License
 //version 2.
-//
+//t
 //This program is distributed in the hope that it will be useful,
 //but WITHOUT ANY WARRANTY; without even the implied warranty of
 //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -978,7 +978,8 @@ function parse_chat() { //parse chat used for chat commands and to insert emotic
 			var id_usr = reg_usr.exec(toParse);
 			var id_time = reg_time.exec(toParse);
 			var cleanMsg = toParse.split("> ")[1];
-			var log_tag = (id_time[0]);
+			
+			var log_tag = id_time ? (id_time[0]) : undefined;
 
 			if ((log_tag) != (arr_time[0])) {
 				arr_time.unshift(log_tag);
